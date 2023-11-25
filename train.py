@@ -7,7 +7,6 @@ from datasets import load_from_disk, load_metric
 from transformers import (DataCollatorForTokenClassification, AutoTokenizer,
                           AutoModelForTokenClassification, TrainingArguments, Trainer)
 
-# from sklearn.metrics import classification_report
 from sklearn.utils.class_weight import compute_class_weight
 
 from torch import nn
@@ -71,7 +70,6 @@ def main():
     tokenized_dataset_val = balanced_val_dataset.map(tokenize_adjust_labels, batched=True)
     tokenized_dataset_test = balanced_test_dataset.map(tokenize_adjust_labels, batched=True)
 
-    # Assuming you have labels as 0s and 1s in a list or array
     labels = [0] * (68395 - 8166) + [1] * 8166
 
     # Calculate class weights
@@ -154,17 +152,7 @@ def main():
 
     trainer.train()
 
-    # import shutil
-
-    # # Specify the directory to remove
-    # directory_to_remove = "/kaggle/working/fine_tune_bert_output"
-
-    # # Use shutil.rmtree to remove the directory and its contents
-    # shutil.rmtree(directory_to_remove)
-
     model.save_pretrained("./models/large_model")
-
-    # loaded_model = AutoModelForTokenClassification.from_pretrained("./models/large_model")
 
     # Evaluate the model on the test dataset
     evaluation_results = trainer.evaluate(eval_dataset=tokenized_dataset_test)
