@@ -21,7 +21,8 @@ Inference on new text samples can be performed using the following command:
 The results and demo examples can be found in the `demo.ipynb` Jupyter notebook.
 
 # 4. Model Weights
-The trained model weights can be accessed via the following Hugging Face Model Hub link: [dieumerci/mountain-recognition-ner](https://huggingface.co/dieumerci/mountain-recognition-ner/commit/7f81a566f20e6c58c77c6ed0e459ae6c0a94356f)
+The trained model weights can be accessed via the following Hugging Face Model Hub link: [dieumerci/mountain-recognition-ner](https://huggingface.co/dieumerci/mountain-recognition-ner/commit/7f81a566f20e6c58c77c6ed0e459ae6c0a94356f).
+The model achieves F1 Score of *87.42%* on test data.
 
 # Project Structure
 - `balanced_datasets`: Contains the balanced training, validation, and test datasets.
